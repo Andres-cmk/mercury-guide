@@ -508,3 +508,13 @@ body {
 }
 .reveal pre.mx-code .hljs-ln td.hljs-ln-numbers { min-width: 2em; padding-right: 1em; opacity: 0.45; }
 .reveal pre.mx-code .hljs.has-highlights tr:not(.highlight-line) { opacity: 0.28; }
+
+/* Los pasos se apilan en el mismo lugar */
+.paso-wrap {
+    position: relative;
+    min-height: 60vh;
+}
+.paso-wrap .paso {
+    position: absolute;
+    inset: 0;
+}

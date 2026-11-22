@@ -205,29 +205,35 @@
     <section>
       <span class="kicker">Sección 3</span>
       <h2>Organizar datos</h2>
-      <p class="muted" style="margin:0">Avanza con ↓ y retrocede con ↑</p>
+      <p class="muted" style="margin:0">Avanza con → y retrocede con ←</p>
 
-      <!-- Código 1: listas -->
+      <div class="paso-wrap">
+
+        <!-- Código 1: listas -->
+        <div class="paso fragment fade-in-then-out" data-fragment-index="1">
       <pre class="steps-code"><code class="mercury"><span class="k">:- import_module</span> <span class="t">list</span>.
 
 <span class="k">:- func</span> <span class="f">numeros</span> = <span class="t">list</span>(<span class="t">int</span>).
 
 <span class="f">numeros</span> = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].</code></pre>
+          <div class="cap-wrap">
+            <div class="cap c-cyan"><b>Listas:</b> colecciones de elementos del mismo tipo.</div>
+          </div>
+        </div>
 
-      <div class="cap-wrap">
-        <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="1"><b>Listas:</b> colecciones de elementos del mismo tipo.</div>
-      </div>
-
-      <!-- Código 2: tipo enumerado -->
+        <!-- Código 2: tipo enumerado -->
+        <div class="paso fragment fade-in-then-out" data-fragment-index="2">
       <pre class="steps-code"><code class="mercury"><span class="k">:- type</span> <span class="t">dia</span>
     <span class="k">---&gt;</span> <span class="f">lunes</span>
     <span class="k">;</span>    <span class="f">martes</span>
     <span class="k">;</span>    <span class="f">miercoles</span>
     <span class="k">;</span>    <span class="f">jueves</span>
     <span class="k">;</span>    <span class="f">viernes</span>.</code></pre>
+          <div class="cap-wrap">
+            <div class="cap c-violet"><b>Tipos personalizados:</b> permiten definir estructuras con valores propios.</div>
+          </div>
+        </div>
 
-      <div class="cap-wrap">
-        <div class="cap c-violet fragment fade-in-then-out" data-fragment-index="2"><b>Tipos personalizados:</b> permiten definir estructuras con valores propios.</div>
       </div>
     </section>
 
@@ -260,36 +266,44 @@
     <section>
       <span class="kicker">Sección 5</span>
       <h2>Funciones y predicados</h2>
-      <p class="muted" style="margin:0">Avanza con ↓ y retrocede con ↑</p>
+      <p class="muted" style="margin:0">Avanza con → y retrocede con ←</p>
 
-      <!-- Predicados -->
+      <div class="paso-wrap">
+
+        <!-- Predicados -->
+        <div class="paso fragment fade-in-then-out" data-fragment-index="1">
       <pre class="steps-code"><code class="mercury"><span class="k">:- pred</span> <span class="f">es_par</span>(<span class="t">int</span>::<span class="k">in</span>) <span class="k">is</span> <span class="k">semidet</span>.
 
 <span class="f">es_par</span>(<span class="v">N</span>) <span class="k">:-</span>
     <span class="v">N</span> <span class="k">mod</span> <span class="n">2</span> <span class="o">=</span> <span class="n">0</span>.</code></pre>
-
-      <div class="cap-wrap">
-        <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="1">
-          <b>Predicados.</b> Representan relaciones entre valores. Pueden tener éxito o fallar. Se utilizan para comprobar condiciones o establecer relaciones.
+          <div class="cap-wrap">
+            <div class="cap c-cyan">
+              <b>Predicados.</b> Representan relaciones entre valores. Pueden tener éxito o fallar. Se utilizan para comprobar condiciones o establecer relaciones.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Funciones -->
+        <!-- Funciones -->
+        <div class="paso fragment fade-in-then-out" data-fragment-index="2">
       <pre class="steps-code"><code class="mercury"><span class="k">:- func</span> <span class="f">cuadrado</span>(<span class="t">int</span>) = <span class="t">int</span>.
 
 <span class="f">cuadrado</span>(<span class="v">N</span>) = <span class="v">N</span> <span class="o">*</span> <span class="v">N</span>.</code></pre>
-
-      <div class="cap-wrap">
-        <div class="cap c-violet fragment fade-in-then-out" data-fragment-index="2">
-          <b>Funciones.</b> Reciben argumentos y producen un valor como resultado. Se utilizan para realizar cálculos y transformaciones.
+          <div class="cap-wrap">
+            <div class="cap c-violet">
+              <b>Funciones.</b> Reciben argumentos y producen un valor como resultado. Se utilizan para realizar cálculos y transformaciones.
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Diferencia -->
-      <div class="cap-wrap">
-        <div class="cap c-green fragment fade-in-then-out" data-fragment-index="3">
-          <b>Diferencia principal.</b> Un predicado determina si una relación se cumple; una función calcula y devuelve un valor.
+        <!-- Diferencia -->
+        <div class="paso fragment fade-in-then-out" data-fragment-index="3">
+          <div class="cap-wrap">
+            <div class="cap c-green">
+              <b>Diferencia principal.</b> Un predicado determina si una relación se cumple; una función calcula y devuelve un valor.
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
     <!-- ===== FIN SECCIÓN (Maria Luisa Bautista) : Tour por Mercury ===== -->
