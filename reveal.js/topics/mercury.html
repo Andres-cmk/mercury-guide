@@ -149,6 +149,151 @@
 
     <!-- ===== FIN SECCIÓN: Primeros pasos ===== -->
 
+    <!-- ===== SECCIÓN: Tour por Mercury  (Maria Luisa Bautista) ===== -->
+
+    <section data-transition="fade">
+      <span class="kicker">Información general</span>
+      <h2><span class="grad">Tour por Mercury</span></h2>
+      <table>
+        <thead>
+          <tr><th>Sección</th><th>Descripción</th></tr>
+        </thead>
+        <tbody>
+          <tr class="fragment"><td>Sección 1</td><td>Sintaxis básica</td></tr>
+          <tr class="fragment"><td>Sección 2</td><td>Variables y tipos</td></tr>
+          <tr class="fragment"><td>Sección 3</td><td>Estructuras de datos</td></tr>
+          <tr class="fragment"><td>Sección 4</td><td>Operadores y condiciones</td></tr>
+          <tr class="fragment"><td>Sección 5</td><td>Funciones y predicados</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <span class="kicker">Sección 1</span>
+      <h2>Sintaxis</h2>
+      <p class="muted" style="margin:0">Avanza con ↓ y retrocede con ↑: se resalta una línea a la vez</p>
+
+      <pre class="steps-code"><code class="mercury"><span class="ln fragment custom" data-fragment-index="1"><span class="c">% Comprobar si una persona es mayor de edad</span></span><span class="ln-gap"></span><span class="ln fragment custom" data-fragment-index="2"><span class="k">:- pred</span> <span class="f">mayor_edad</span>(<span class="t">int</span>::<span class="k">in</span>) <span class="k">is</span> <span class="k">semidet</span>.</span><span class="ln-gap"></span><span class="ln fragment custom" data-fragment-index="3"><span class="f">mayor_edad</span>(<span class="v">Edad</span>) <span class="k">:-</span></span><span class="ln fragment custom" data-fragment-index="4">    <span class="v">Edad</span> <span class="o">&gt;=</span> <span class="n">18</span>.</span></code></pre>
+
+      <div class="cap-wrap">
+        <div class="cap c-pink fragment fade-in-then-out" data-fragment-index="1"><b>Comentarios.</b> Comienzan con <code>%</code>.</div>
+        <div class="cap c-violet fragment fade-in-then-out" data-fragment-index="2"><b>Declaraciones.</b> <code>:-</code> introduce reglas y declaraciones. Terminan en punto (<code>.</code>).</div>
+        <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="3"><b>Predicados y variables.</b> <code>mayor_edad</code> (minúscula) es un predicado; <code>Edad</code> (mayúscula) es una variable.</div>
+        <div class="cap c-green fragment fade-in-then-out" data-fragment-index="4"><b>Cláusulas.</b> Terminan en punto (<code>.</code>).</div>
+      </div>
+    </section>
+
+    <section data-transition="fade">
+      <span class="kicker">Sección 2</span>
+      <h2>Variables</h2>
+      <table>
+        <thead>
+        <tr><th>Tipo</th><th>Ejemplo</th></tr>
+        </thead>
+        <tbody>
+        <tr class="fragment"><td>int</td><td>25</td></tr>
+        <tr class="fragment"><td>float</td><td>3.14</td></tr>
+        <tr class="fragment"><td>string</td><td>"Hola"</td></tr>
+        <tr class="fragment"><td>char</td><td>'A'</td></tr>
+        <tr class="fragment"><td>bool</td><td>yes, no</td></tr>
+        </tbody>
+      </table>
+      <p class="muted"><code>*</code> Una vez vinculada a un valor, una variable no puede modificarse.</p>
+      <p class="muted"><code>*</code> Mercury utiliza tipado estático: los tipos se verifican durante la compilación.</p>
+    </section>
+
+    <section>
+      <span class="kicker">Sección 3</span>
+      <h2>Organizar datos</h2>
+      <p class="muted" style="margin:0">Avanza con ↓ y retrocede con ↑</p>
+
+      <!-- Código 1: listas -->
+      <pre class="steps-code"><code class="mercury"><span class="k">:- import_module</span> <span class="t">list</span>.
+
+<span class="k">:- func</span> <span class="f">numeros</span> = <span class="t">list</span>(<span class="t">int</span>).
+
+<span class="f">numeros</span> = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>].</code></pre>
+
+      <div class="cap-wrap">
+        <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="1"><b>Listas:</b> colecciones de elementos del mismo tipo.</div>
+      </div>
+
+      <!-- Código 2: tipo enumerado -->
+      <pre class="steps-code"><code class="mercury"><span class="k">:- type</span> <span class="t">dia</span>
+    <span class="k">---&gt;</span> <span class="f">lunes</span>
+    <span class="k">;</span>    <span class="f">martes</span>
+    <span class="k">;</span>    <span class="f">miercoles</span>
+    <span class="k">;</span>    <span class="f">jueves</span>
+    <span class="k">;</span>    <span class="f">viernes</span>.</code></pre>
+
+      <div class="cap-wrap">
+        <div class="cap c-violet fragment fade-in-then-out" data-fragment-index="2"><b>Tipos personalizados:</b> permiten definir estructuras con valores propios.</div>
+      </div>
+    </section>
+
+    <section data-transition="fade">
+      <span class="kicker">Sección 4</span>
+      <h2>Operadores y condiciones</h2>
+      <table>
+        <thead>
+        <tr><th>Categoría</th><th>Operadores</th><th>Uso</th></tr>
+        </thead>
+        <tbody>
+        <tr class="fragment"><td>Aritméticos</td><td>+, -, *, /, mod</td><td>Operaciones matemáticas</td></tr>
+        <tr class="fragment"><td>Comparación</td><td>=, \=, <, >, =<, >=</td><td>Comparar valores</td></tr>
+        <tr class="fragment"><td>Lógicos</td><td>,, ;</td><td>AND y OR</td></tr>
+        </tbody>
+
+      </table>
+
+      <p class="muted"><code>*</code> Ejemplo de uso con condicional</p>
+      <pre class="steps-code"><code class="mercury"><span class="k">:- pred</span> <span class="f">clasificar</span>(<span class="t">int</span>::<span class="k">in</span>, <span class="t">string</span>::<span class="k">out</span>) <span class="k">is</span> <span class="k">det</span>.
+
+<span class="f">clasificar</span>(<span class="v">Edad</span>, <span class="v">Resultado</span>) <span class="k">:-</span>
+    ( <span class="k">if</span> <span class="v">Edad</span> <span class="o">&gt;=</span> <span class="n">18</span> <span class="k">then</span>
+        <span class="v">Resultado</span> = <span class="s">"Mayor de edad"</span>
+    <span class="k">else</span>
+        <span class="v">Resultado</span> = <span class="s">"Menor de edad"</span>
+    ).</code></pre>
+    </section>
+
+    <section>
+      <span class="kicker">Sección 5</span>
+      <h2>Funciones y predicados</h2>
+      <p class="muted" style="margin:0">Avanza con ↓ y retrocede con ↑</p>
+
+      <!-- Predicados -->
+      <pre class="steps-code"><code class="mercury"><span class="k">:- pred</span> <span class="f">es_par</span>(<span class="t">int</span>::<span class="k">in</span>) <span class="k">is</span> <span class="k">semidet</span>.
+
+<span class="f">es_par</span>(<span class="v">N</span>) <span class="k">:-</span>
+    <span class="v">N</span> <span class="k">mod</span> <span class="n">2</span> <span class="o">=</span> <span class="n">0</span>.</code></pre>
+
+      <div class="cap-wrap">
+        <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="1">
+          <b>Predicados.</b> Representan relaciones entre valores. Pueden tener éxito o fallar. Se utilizan para comprobar condiciones o establecer relaciones.
+        </div>
+      </div>
+
+      <!-- Funciones -->
+      <pre class="steps-code"><code class="mercury"><span class="k">:- func</span> <span class="f">cuadrado</span>(<span class="t">int</span>) = <span class="t">int</span>.
+
+<span class="f">cuadrado</span>(<span class="v">N</span>) = <span class="v">N</span> <span class="o">*</span> <span class="v">N</span>.</code></pre>
+
+      <div class="cap-wrap">
+        <div class="cap c-violet fragment fade-in-then-out" data-fragment-index="2">
+          <b>Funciones.</b> Reciben argumentos y producen un valor como resultado. Se utilizan para realizar cálculos y transformaciones.
+        </div>
+      </div>
+
+      <!-- Diferencia -->
+      <div class="cap-wrap">
+        <div class="cap c-green fragment fade-in-then-out" data-fragment-index="3">
+          <b>Diferencia principal.</b> Un predicado determina si una relación se cumple; una función calcula y devuelve un valor.
+        </div>
+      </div>
+    </section>
+    <!-- ===== FIN SECCIÓN (Maria Luisa Bautista) : Tour por Mercury ===== -->
+
     <!-- ===== SECCIÓN: Particularidades de Mercury (Juan Camilo Rosero) ===== -->
 
     <section data-transition="fade" class="mx-divider">
