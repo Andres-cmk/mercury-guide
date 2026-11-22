@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Mercury — Programación lógica con garantías</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../dist/reset.css">
+  <link rel="stylesheet" href="../dist/reveal.css">
+  <link rel="stylesheet" href="../global.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- Portada -->
+    <section data-transition="fade">
+      <div class="orb" style="width:220px;height:220px;left:-60px;top:40px;background:radial-gradient(circle at 30% 30%,#c4b5fd,#8b5cf6 60%,transparent 70%)"></div>
+      <div class="orb" style="width:140px;height:140px;right:20px;bottom:30px;background:radial-gradient(circle at 30% 30%,#a5f3fc,#22d3ee 60%,transparent 70%)"></div>
+      <span class="kicker">Lenguajes de programación</span>
+      <h1 class="grad">Mercury</h1>
+      <p style="font-size:0.9em">Programación lógica y funcional,<br><strong>con el compilador de tu lado</strong></p>
+    </section>
+
+    <!-- Qué es -->
+    <section>
+      <span class="kicker">Introducción</span>
+      <h2>¿Qué es <span class="grad">Mercury</span>?</h2>
+      <div class="grid cols-3" style="margin-top:1em">
+        <div class="card c-violet"><span class="big">λ</span><h3>Lógico-funcional</h3><p>Lo mejor de Prolog y de los lenguajes funcionales, sin efectos ocultos.</p></div>
+        <div class="card c-cyan"><span class="big">🏛</span><h3>Origen académico</h3><p>Creado en la Universidad de Melbourne a mediados de los 90.</p></div>
+        <div class="card c-pink"><span class="big">⚡</span><h3>Compila a código eficiente</h3><p>Pensado para sistemas grandes, rápidos y mantenibles.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN: Primeros pasos — instalación y ejecución ===== -->
+
+    <!-- Ruta -->
+    <section data-transition="zoom">
+      <span class="kicker">Parte práctica</span>
+      <h2>Primeros <span class="grad">pasos</span></h2>
+      <p class="muted" style="font-size:0.75em">De cero a tu primer programa en cuatro pasos</p>
+      <div class="steps">
+        <div class="step fragment"><span class="n">1</span><b>Instalar</b><small>mmc</small></div>
+        <div class="step fragment"><span class="n">2</span><b>Crear el archivo</b><small>hola.m</small></div>
+        <div class="step fragment"><span class="n">3</span><b>Escribir</b><small>Hola, Mercury</small></div>
+        <div class="step fragment"><span class="n">4</span><b>Compilar y correr</b><small>mmc --make</small></div>
+      </div>
+    </section>
+
+    <!-- Instalación: opciones -->
+    <section>
+      <span class="kicker">Paso 1 · Instalación</span>
+      <h2>¿Dónde instalo Mercury?</h2>
+      <div class="grid cols-3" style="margin-top:1em">
+        <div class="card c-green fragment"><span class="big">🐧</span><h3>Ubuntu / Debian</h3><p>Paquetes oficiales con <code>apt</code>: se instala <code>mercury-recommended</code>.</p></div>
+        <div class="card c-cyan fragment"><span class="big">🪟</span><h3>Windows</h3><p>Mercury tiene soporte para Windows 10 y 11. Una opción práctica: <strong>Ubuntu en WSL</strong>.</p></div>
+        <div class="card c-violet fragment"><span class="big">🧩</span><h3>Código fuente</h3><p>Para otras distribuciones: descargar el tarball y compilar con <code>configure</code> y <code>make</code>.</p></div>
+      </div>
+      <p class="muted">Descargas oficiales: dl.mercurylang.org</p>
+    </section>
+
+    <!-- Instalación: comandos -->
+    <section>
+      <span class="kicker">Paso 1 · Instalación</span>
+      <h2>Instalar con apt (Ubuntu 24.04 / WSL)</h2>
+      <pre class="term"><code class="mercury"><span class="c"># 1. Clave del repositorio oficial</span>
+<span class="pr">$</span> sudo apt install wget ca-certificates
+<span class="pr">$</span> wget -O /tmp/paul.asc https://paul.bone.id.au/paul.asc
+<span class="pr">$</span> sudo cp /tmp/paul.asc /etc/apt/trusted.gpg.d/paulbone.asc
+
+<span class="c"># 2. Agregar el repositorio de Mercury</span>
+<span class="pr">$</span> echo "deb http://dl.mercurylang.org/deb/ noble main" | sudo tee /etc/apt/sources.list.d/mercury.list
+
+<span class="c"># 3. Instalar y comprobar</span>
+<span class="pr">$</span> sudo apt update &amp;&amp; sudo apt install mercury-recommended
+<span class="pr">$</span> mmc --version</code></pre>
+      <p class="muted">Para Debian 12 cambia <code>noble</code> por <code>bookworm</code>. En Ubuntu debe estar activo el repositorio <code>universe</code>.</p>
+    </section>
+
+    <!-- Advertencia mmc en Windows -->
+    <section>
+      <span class="kicker">Ojo en Windows</span>
+      <h2>Dos programas llamados <span style="color:var(--amber)">mmc</span></h2>
+      <div class="grid cols-2" style="margin-top:1em">
+        <div class="card c-amber"><h3>Microsoft Management Console</h3><p>Windows ya trae un <code>mmc</code>. Si lo escribes en CMD o PowerShell, abre esa consola.</p></div>
+        <div class="card c-green"><h3>Melbourne Mercury Compiler</h3><p>El nuestro. Instálalo en WSL, o pon la carpeta <code>bin</code> de Mercury <strong>antes</strong> que la de Windows en el PATH.</p></div>
+      </div>
+    </section>
+
+    <!-- El archivo -->
+    <section data-transition="fade">
+      <span class="kicker">Paso 2 · El archivo</span>
+      <h2>Un programa, un archivo <code style="color:var(--pink)">.m</code></h2>
+      <div class="filechip"><span class="nm">hola</span><span class="ext">.m</span></div>
+      <div class="grid cols-2" style="margin-top:0.6em">
+        <div class="card c-pink fragment"><h3>Extensión</h3><p>El código fuente de Mercury siempre termina en <code>.m</code>.</p></div>
+        <div class="card c-green fragment"><h3>Nombre = módulo</h3><p>Si el módulo se llama <code>hola</code>, el archivo debe llamarse <code>hola.m</code>.</p></div>
+      </div>
+    </section>
+
+    <!-- Hola mundo -->
+    <section>
+      <span class="kicker">Paso 3 · Primer programa</span>
+      <h2>Hola, Mercury</h2>
+      <pre><code class="mercury"><span class="c">% hola.m</span>
+<span class="k">:- module</span> <span class="p">hola</span>.
+<span class="k">:- interface</span>.
+<span class="k">:- import_module</span> <span class="t">io</span>.
+
+<span class="k">:- pred</span> <span class="p">main</span>(<span class="t">io</span>::<span class="m">di</span>, <span class="t">io</span>::<span class="m">uo</span>) <span class="k">is</span> <span class="m">det</span>.
+
+<span class="k">:- implementation</span>.
+
+<span class="p">main</span>(!IO) :-
+    io.write_string(<span class="s">"¡Hola, Mercury!\n"</span>, !IO).</code></pre>
+      <p><a class="pill c-cyan" href="https://glot.io/new/mercury" target="_blank" rel="noopener">▶ Pruébalo en glot.io</a></p>
+    </section>
+
+    <!-- Hola mundo: explicación -->
+    <section>
+      <span class="kicker">Paso 3 · Qué hace cada parte</span>
+      <h2>Anatomía del programa</h2>
+      <p class="muted" style="margin:0">Avanza con ↓ y retrocede con ↑: se resalta una línea a la vez</p>
+      <pre class="steps-code"><code class="mercury"><span class="ln fragment custom" data-fragment-index="1"><span class="k">:- module</span> <span class="p">hola</span>.</span><span class="ln-gap"></span><span class="ln fragment custom" data-fragment-index="2"><span class="k">:- interface</span>.</span><span class="ln fragment custom" data-fragment-index="3"><span class="k">:- import_module</span> <span class="t">io</span>.</span><span class="ln fragment custom" data-fragment-index="4"><span class="k">:- pred</span> <span class="p">main</span>(<span class="t">io</span>::<span class="m">di</span>, <span class="t">io</span>::<span class="m">uo</span>) <span class="k">is</span> <span class="m">det</span>.</span><span class="ln-gap"></span><span class="ln fragment custom" data-fragment-index="5"><span class="k">:- implementation</span>.</span><span class="ln-gap"></span><span class="ln fragment custom" data-fragment-index="6"><span class="p">main</span>(!IO) :-</span><span class="ln fragment custom" data-fragment-index="7">    io.write_string(<span class="s">"¡Hola, Mercury!\n"</span>, !IO).</span></code></pre>
+      <div class="cap-wrap">
+        <div class="cap c-pink fragment fade-in-then-out" data-fragment-index="1"><b>Módulo.</b> Su nombre debe coincidir con el del archivo: <code>hola.m</code>.</div>
+        <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="2"><b>Interfaz.</b> Lo que el módulo muestra hacia afuera. Cada declaración termina en punto.</div>
+        <div class="cap c-violet fragment fade-in-then-out" data-fragment-index="3"><b>Importación.</b> Trae la biblioteca de entrada y salida, <code>io</code>.</div>
+        <div class="cap c-amber fragment fade-in-then-out" data-fragment-index="4"><b>Declaración de main.</b> Recibe y devuelve el estado del mundo (<code>di</code>, <code>uo</code>); <code>det</code>: siempre da una solución.</div>
+        <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="5"><b>Implementación.</b> Aquí empieza la lógica del módulo.</div>
+        <div class="cap c-pink fragment fade-in-then-out" data-fragment-index="6"><b>Definición de main.</b> El punto de entrada del programa. <code>!IO</code> representa el estado del mundo.</div>
+        <div class="cap c-green fragment fade-in-then-out" data-fragment-index="7"><b>Imprime el texto</b> y pasa el estado al siguiente paso.</div>
+      </div>
+    </section>
+
+    <!-- Compilar y ejecutar -->
+    <section>
+      <span class="kicker">Paso 4 · Compilar y ejecutar</span>
+      <h2>Del <code style="color:var(--pink)">.m</code> al ejecutable</h2>
+      <pre class="term"><code class="mercury"><span class="c"># Compilar (sin la extensión .m)</span>
+<span class="pr">$</span> mmc --make hola
+
+<span class="fragment"><span class="c"># Ejecutar</span>
+<span class="pr">$</span> ./hola
+<span class="out">¡Hola, Mercury!</span></span></code></pre>
+      <p class="muted">En Windows nativo el ejecutable es <code>hola.exe</code>.</p>
+    </section>
+
+    <!-- ===== FIN SECCIÓN: Primeros pasos ===== -->
+
+    <!-- Cierre -->
+    <section data-transition="fade">
+      <h1 class="grad">Fin</h1>
+      <p>Consulta la documentación oficial de Mercury.</p>
+      <p>
+        <a class="pill c-cyan" href="https://mercurylang.org/" target="_blank" rel="noopener">Ir a mercurylang.org →</a>
+      </p>
+      <p class="muted">
+        <a href="../index.html">← Volver al temario</a>
+      </p>
+    </section>
+
+  </div>
+</div>
+
+<script src="../dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    width: 1280,
+    height: 720,
+    margin: 0.06
+  });
+</script>
+</body>
+</html>
