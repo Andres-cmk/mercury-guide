@@ -147,6 +147,7 @@
       <p class="muted">En Windows nativo el ejecutable es <code>hola.exe</code>.</p>
     </section>
 
+
     <!-- ===== FIN SECCIÓN: Primeros pasos ===== -->
 
     <!-- ===== SECCIÓN: Tour por Mercury  (Maria Luisa Bautista) ===== -->
@@ -642,6 +643,50 @@ main(!IO) :-
         Resultado: Tope: 2. El último que entró es el primero que sale.
         En una sola pieza vimos el tipo abstracto, los modos in y out, det y semidet,
         el módulo que oculta su representación y la entrada y salida con el estado del mundo.
+      </aside>
+    </section>
+
+    <section data-transition="fade">
+      <span class="kicker">Ejemplo interactivo · Consulta con el depurador</span>
+      <h2>¿Qué pasa con <span class="grad">la pila</span>?</h2>
+      <div class="grid cols-2 mx-gap">
+        <div>
+          <span class="mx-tag c-violet" style="display:block;margin-bottom:0.35em">Consulta: resuelvan primero</span>
+          <pre class="mx-code"><code class="mercury" data-trim>
+apilar(1, vacia, P1),
+apilar(2, P1, P2),
+desapilar(Tope, P2, Resto).
+          </code></pre>
+          <div class="card c-amber fragment" data-fragment-index="1" style="margin-top:0.55em">
+            <p><strong>Predecir:</strong> ¿qué valor tienen <code>P1</code>, <code>P2</code>, <code>Tope</code> y <code>Resto</code>?</p>
+          </div>
+        </div>
+        <div>
+          <span class="mx-tag c-cyan" style="display:block;margin-bottom:0.35em">Terminal + mdb</span>
+          <pre class="term"><code class="mercury"><span class="pr">$</span> mmc --make demo_pila
+<span class="pr">$</span> mdb ./demo_pila
+
+<span class="out">mdb&gt;</span> query pila
+<span class="out">?-</span> apilar(1, vacia, P1),
+    apilar(2, P1, P2),
+    desapilar(Tope, P2, Resto).
+<span class="fragment" data-fragment-index="2"><span class="s">P1 = [1]</span></span>
+<span class="fragment" data-fragment-index="3"><span class="s">P2 = [2, 1]</span></span>
+<span class="fragment" data-fragment-index="4"><span class="s">Tope = 2</span></span>
+<span class="fragment" data-fragment-index="5"><span class="s">Resto = [1]</span></span></code></pre>
+        </div>
+      </div>
+      <div class="card c-green fragment" data-fragment-index="6" style="margin-top:0.55em">
+        <p><strong>Resultado final:</strong> <code>P1 = [1]</code> · <code>P2 = [2, 1]</code> · <code>Tope = 2</code> · <code>Resto = [1]</code></p>
+      </div>
+      <aside class="notes">
+        Primero deja que los estudiantes predigan los cuatro valores.
+        Revela P1: apilar uno sobre la pila vacía produce una lista con uno.
+        Revela P2: al apilar dos sobre P1, el dos queda al frente.
+        Revela Tope: al desapilar P2, el elemento de la cima es dos.
+        Revela Resto: después de desapilar, queda la pila con uno.
+        Al final muestra el resultado completo. Recuerda que mdb compila la consulta sobre la marcha,
+        pero la ejecución sigue siendo nativa y Mercury sigue siendo un lenguaje compilado.
       </aside>
     </section>
 
