@@ -138,20 +138,22 @@ suma_lista([Cabeza | Resto], Total) :-
           <h3>Problema</h3>
           <p>Completa el caso base y la llamada recursiva de <code>factorial</code>.</p>
           <ul>
-            <li><code>factorial(0, 1).</code></li>
-            <li>Para <code>N &gt; 0</code>, resta uno y calcula el resto.</li>
+            <li>Si <code>N =&lt; 0</code>, el resultado es <code>1</code>.</li>
+            <li>Si no, resta uno y calcula el factorial del resto.</li>
             <li>Finalmente multiplica ambos resultados.</li>
           </ul>
         </div>
         <div>
           <textarea class="code-editor" id="exercise-3" spellcheck="false">:- pred factorial(int::in, int::out) is det.
 
-factorial(0, __BASE__).
 factorial(N, Resultado) :-
-    N > 0,
-    N1 = N - 1,
-    factorial(__LLAMADA__, Subresultado),
-    __RESULTADO__.</textarea>
+    ( if N =&lt; 0 then
+        Resultado = __BASE__
+    else
+        N1 = N - 1,
+        factorial(__LLAMADA__, Subresultado),
+        __RESULTADO__
+    ).</textarea>
           <div class="exercise-actions">
             <button class="submit-code" type="button" data-exercise="exercise-3">Enviar respuesta</button>
             <span class="feedback" id="feedback-3" role="status" aria-live="polite"></span>
@@ -159,7 +161,7 @@ factorial(N, Resultado) :-
         </div>
       </div>
       <aside class="notes">
-        Tercer ejercicio. Respuestas: el caso base es 1, la llamada es factorial(N1, Subresultado) y el resultado es Resultado = N * Subresultado. Ojo: con estas dos cláusulas Mercury no puede probar det, porque con N negativo no hay solución. Si preguntan, la versión correcta usa if-then-else.
+        Tercer ejercicio. Respuestas: el caso base es 1, la llamada es factorial(N1, Subresultado) y el resultado es Resultado = N * Subresultado. Punto clave: usamos if-then-else para que el compilador acepte det, porque cubre todos los enteros, incluso los negativos. Con dos cláusulas sueltas, factorial(0, 1) y otra con N > 0, Mercury no podría garantizar una solución para N negativo.
       </aside>
     </section>
 
@@ -207,12 +209,12 @@ factorial(N, Resultado) :-
       feedback: 'feedback-3',
       check(code) {
         const compact = code.toLowerCase().replace(/\s+/g, '');
-        return /factorial\(0,1\)/.test(compact) &&
+        return /thenresultado=1else/.test(compact) &&
           /factorial\(n1,subresultado\)/.test(compact) &&
           /resultado=n\*subresultado/.test(compact);
       },
       success: '¡Correcto! El caso base y la recursión usan los modos adecuados.',
-      error: 'Faltan detalles: usa factorial(0, 1), factorial(N1, Subresultado) y Resultado = N * Subresultado.'
+      error: 'Faltan detalles: el caso base es 1, la llamada es factorial(N1, Subresultado) y Resultado = N * Subresultado.'
     }
   };
 

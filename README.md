@@ -1,32 +1,53 @@
-<p align="center">
-  <a href="https://revealjs.com">
-  <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text-sticker.png" alt="reveal.js" width="500">
-  </a>
-  <br><br>
-  <a href="https://github.com/hakimel/reveal.js/actions"><img src="https://github.com/hakimel/reveal.js/actions/workflows/test.yml/badge.svg"></a>
-  <a href="https://slides.com/"><img src="https://static.slid.es/images/slides-github-banner-320x40.png?1" alt="Slides" width="160" height="20"></a>
-</p>
+# Tutorial de Mercury
 
-reveal.js is an open source HTML presentation framework. It enables anyone with a web browser to create beautiful presentations for free. Check out the live demo at [revealjs.com](https://revealjs.com/).
+Presentación de la sesión práctica de **Lenguajes de Programación** (Universidad Nacional de Colombia, 2026-2), tema *Programación lógica: tutorial de Mercury*.
 
-The framework comes with a powerful feature set including [nested slides](https://revealjs.com/vertical-slides/), [Markdown support](https://revealjs.com/markdown/), [Auto-Animate](https://revealjs.com/auto-animate/), [PDF export](https://revealjs.com/pdf-export/), [speaker notes](https://revealjs.com/speaker-view/), [LaTeX typesetting](https://revealjs.com/math/), [syntax highlighted code](https://revealjs.com/code/) and an [extensive API](https://revealjs.com/api/).
+Mercury es un lenguaje lógico-funcional, creado en la Universidad de Melbourne, que verifica en compilación los tipos, los modos y el determinismo de cada predicado.
 
----
+## Integrantes
 
-Want to create reveal.js presentation in a graphical editor? Try <https://slides.com>. It's made by the same people behind reveal.js.
+- María Luisa Bautista Arango
+- Misael Jesús Flórez Anave
+- Andrés Felipe Ramírez Montaña
+- Julián Esteban Mendoza Wilches
+- Juan Camilo Rosero Santisteban
+- Miguel Ángel Suárez Cortés
 
----
+## Contenido
 
-### Getting started
+| Tema | Archivo | Qué cubre |
+|---|---|---|
+| 01 · Fundamentos | `reveal.js/topics/fundamentos-mercury.html` | Imperativo vs. declarativo, hechos, reglas, unificación, tipos, modos y determinismo |
+| 02 · Mercury | `reveal.js/topics/mercury.html` | Primeros pasos, tour por el lenguaje, particularidades, ejemplo de una pila y cierre |
+| 03 · Práctica | `reveal.js/topics/practica-mercury.html` | Tres ejercicios interactivos con validación de respuestas |
 
-- 🚀 [Install reveal.js](https://revealjs.com/installation)
-- 👀 [View the demo presentation](https://revealjs.com/demo)
-- 📖 [Read the documentation](https://revealjs.com/markup/)
-- 🖌 [Try the visual editor for reveal.js at Slides.com](https://slides.com/)
-- 🎬 [Watch the reveal.js video course (paid)](https://revealjs.com/course)
+## Cómo verla
 
----
+Requiere [Node.js](https://nodejs.org/) (versión LTS).
 
-<div align="center">
-  MIT licensed | Copyright © 2011-2026 Hakim El Hattab, https://hakim.se
-</div>
+```
+cd reveal.js
+npm install   # solo la primera vez
+npm start
+```
+
+Se abre en `http://localhost:8000`. La portada lleva a los tres temas.
+
+## Cómo presentar
+
+| Tecla | Acción |
+|---|---|
+| `S` | Vista de orador, con las notas de cada diapositiva |
+| `F` | Pantalla completa |
+| `Esc` | Vista general de las diapositivas |
+| `?` | Ayuda con todos los atajos |
+
+Todas las diapositivas tienen notas de orador con el texto sugerido para presentarlas.
+
+## Cómo contribuir
+
+Las reglas de trabajo en equipo (secciones por autor, componentes y paleta de colores) están en [`EQUIPO.md`](EQUIPO.md).
+
+## Créditos
+
+Hecha con [reveal.js](https://revealjs.com/) (licencia MIT). Su documentación original está en [`reveal.js/README.md`](reveal.js/README.md).
