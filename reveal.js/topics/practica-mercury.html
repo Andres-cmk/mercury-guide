@@ -94,6 +94,9 @@ puede_participar(Edad) :-
           </div>
         </div>
       </div>
+      <aside class="notes">
+        Primer ejercicio. Que el público complete dos huecos. Respuesta: el modo es semidet, y la condición es Edad >= 18. Pregunta para ellos: ¿por qué semidet y no det? Porque con 15 la regla falla.
+      </aside>
     </section>
 
     <section data-transition="fade">
@@ -122,6 +125,9 @@ suma_lista([Cabeza | Resto], Total) :-
           </div>
         </div>
       </div>
+      <aside class="notes">
+        Segundo ejercicio, recursión sobre listas. Caso base: la lista vacía suma 0. Caso recursivo: Total = Cabeza + SumaResto. Destacar que el compilador acepta det porque cubre los dos casos de la lista: vacía y no vacía.
+      </aside>
     </section>
 
     <section data-transition="fade">
@@ -152,12 +158,16 @@ factorial(N, Resultado) :-
           </div>
         </div>
       </div>
+      <aside class="notes">
+        Tercer ejercicio. Respuestas: el caso base es 1, la llamada es factorial(N1, Subresultado) y el resultado es Resultado = N * Subresultado. Ojo: con estas dos cláusulas Mercury no puede probar det, porque con N negativo no hay solución. Si preguntan, la versión correcta usa if-then-else.
+      </aside>
     </section>
 
   </div>
 </div>
 
 <script src="../dist/reveal.js"></script>
+<script src="../dist/plugin/notes.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -168,7 +178,8 @@ factorial(N, Resultado) :-
     height: 720,
     margin: 0.06,
     progress: true,
-    keyboard: true
+    keyboard: true,
+    plugins: [ RevealNotes ]
   });
 
   const exercises = {

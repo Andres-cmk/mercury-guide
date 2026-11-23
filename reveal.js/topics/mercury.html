@@ -21,6 +21,9 @@
       <span class="kicker">Lenguajes de programación</span>
       <h1 class="grad">Mercury</h1>
       <p style="font-size:0.9em">Programación lógica y funcional,<br><strong>con el compilador de tu lado</strong></p>
+      <aside class="notes">
+        Ahora la parte práctica: Mercury, programación lógica y funcional con el compilador de nuestro lado.
+      </aside>
     </section>
 
     <!-- Qué es -->
@@ -32,6 +35,9 @@
         <div class="card c-cyan"><span class="big">🏛</span><h3>Origen académico</h3><p>Creado en la Universidad de Melbourne a mediados de los 90.</p></div>
         <div class="card c-pink"><span class="big">⚡</span><h3>Compila a código eficiente</h3><p>Pensado para sistemas grandes, rápidos y mantenibles.</p></div>
       </div>
+      <aside class="notes">
+        Mercury toma lo mejor de Prolog y de los lenguajes funcionales, sin efectos ocultos. Nació en la Universidad de Melbourne a mediados de los 90 y compila a código eficiente, pensado para sistemas grandes y mantenibles.
+      </aside>
     </section>
 
     <!-- ===== SECCIÓN: Primeros pasos — instalación y ejecución ===== -->
@@ -47,6 +53,9 @@
         <div class="step fragment"><span class="n">3</span><b>Escribir</b><small>Hola, Mercury</small></div>
         <div class="step fragment"><span class="n">4</span><b>Compilar y correr</b><small>mmc --make</small></div>
       </div>
+      <aside class="notes">
+        Para llegar a nuestro primer programa son cuatro pasos: instalar el compilador, crear el archivo, escribir el código y compilarlo.
+      </aside>
     </section>
 
     <!-- Instalación: opciones -->
@@ -59,6 +68,9 @@
         <div class="card c-violet fragment"><span class="big">🧩</span><h3>Código fuente</h3><p>Para otras distribuciones: descargar el tarball y compilar con <code>configure</code> y <code>make</code>.</p></div>
       </div>
       <p class="muted">Descargas oficiales: dl.mercurylang.org</p>
+      <aside class="notes">
+        En Ubuntu o Debian hay paquetes oficiales. En Windows hay soporte, pero lo más práctico es usar Ubuntu en WSL. En otras distribuciones se compila desde el código fuente.
+      </aside>
     </section>
 
     <!-- Instalación: comandos -->
@@ -77,6 +89,9 @@
 <span class="pr">$</span> sudo apt update &amp;&amp; sudo apt install mercury-recommended
 <span class="pr">$</span> mmc --version</code></pre>
       <p class="muted">Para Debian 12 cambia <code>noble</code> por <code>bookworm</code>. En Ubuntu debe estar activo el repositorio <code>universe</code>.</p>
+      <aside class="notes">
+        Son tres cosas: agregar la clave del repositorio oficial, agregar el repositorio e instalar mercury-recommended. Para comprobar, mmc --version. No hace falta leer cada comando: queda en las diapositivas.
+      </aside>
     </section>
 
     <!-- Advertencia mmc en Windows -->
@@ -87,6 +102,9 @@
         <div class="card c-amber"><h3>Microsoft Management Console</h3><p>Windows ya trae un <code>mmc</code>. Si lo escribes en CMD o PowerShell, abre esa consola.</p></div>
         <div class="card c-green"><h3>Melbourne Mercury Compiler</h3><p>El nuestro. Instálalo en WSL, o pon la carpeta <code>bin</code> de Mercury <strong>antes</strong> que la de Windows en el PATH.</p></div>
       </div>
+      <aside class="notes">
+        Un detalle que nos puede pasar: Windows ya trae un programa llamado mmc, la Microsoft Management Console. Si escriben mmc en CMD se abre esa consola, no el compilador. Solución: usar WSL, o poner la carpeta de Mercury primero en el PATH.
+      </aside>
     </section>
 
     <!-- El archivo -->
@@ -98,6 +116,9 @@
         <div class="card c-pink fragment"><h3>Extensión</h3><p>El código fuente de Mercury siempre termina en <code>.m</code>.</p></div>
         <div class="card c-green fragment"><h3>Nombre = módulo</h3><p>Si el módulo se llama <code>hola</code>, el archivo debe llamarse <code>hola.m</code>.</p></div>
       </div>
+      <aside class="notes">
+        El código va en un archivo .m, y el nombre del archivo tiene que ser igual al del módulo: si el módulo se llama hola, el archivo es hola.m.
+      </aside>
     </section>
 
     <!-- Hola mundo -->
@@ -116,6 +137,9 @@
 <span class="p">main</span>(!IO) :-
     io.write_string(<span class="s">"¡Hola, Mercury!\n"</span>, !IO).</code></pre>
       <p><a class="pill c-cyan" href="https://glot.io/new/mercury" target="_blank" rel="noopener">▶ Pruébalo en glot.io</a></p>
+      <aside class="notes">
+        Este es el programa completo. Se puede probar sin instalar nada en glot.io, con el botón de abajo. Clic solo si hay internet; si no, seguir.
+      </aside>
     </section>
 
     <!-- Hola mundo: explicación -->
@@ -133,6 +157,9 @@
         <div class="cap c-pink fragment fade-in-then-out" data-fragment-index="6"><b>Definición de main.</b> El punto de entrada del programa. <code>!IO</code> representa el estado del mundo.</div>
         <div class="cap c-green fragment fade-in-then-out" data-fragment-index="7"><b>Imprime el texto</b> y pasa el estado al siguiente paso.</div>
       </div>
+      <aside class="notes">
+        Recorremos línea por línea con la flecha abajo. module le da nombre. interface es lo que el módulo muestra afuera. Importamos io para imprimir. Declaramos main: recibe el estado del mundo y lo devuelve, con di y uo, y es det. En implementation va la lógica, y !IO es ese estado pasando de paso en paso.
+      </aside>
     </section>
 
     <!-- Compilar y ejecutar -->
@@ -146,6 +173,9 @@
 <span class="pr">$</span> ./hola
 <span class="out">¡Hola, Mercury!</span></span></code></pre>
       <p class="muted">En Windows nativo el ejecutable es <code>hola.exe</code>.</p>
+      <aside class="notes">
+        Compilamos con mmc --make hola, sin la extensión, y ejecutamos ./hola. En Windows nativo sería hola.exe. Ya tenemos nuestro primer programa. Ahora Luisa nos lleva por el lenguaje.
+      </aside>
     </section>
 
 
@@ -168,6 +198,9 @@
           <tr class="fragment"><td>Sección 5</td><td>Funciones y predicados</td></tr>
         </tbody>
       </table>
+      <aside class="notes">
+        Este es el recorrido del tour en cinco secciones: sintaxis, variables y tipos, estructuras de datos, operadores y condiciones, y funciones y predicados.
+      </aside>
     </section>
 
     <section>
@@ -183,6 +216,9 @@
         <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="3"><b>Predicados y variables.</b> <code>mayor_edad</code> (minúscula) es un predicado; <code>Edad</code> (mayúscula) es una variable.</div>
         <div class="cap c-green fragment fade-in-then-out" data-fragment-index="4"><b>Cláusulas.</b> Terminan en punto (<code>.</code>).</div>
       </div>
+      <aside class="notes">
+        Sintaxis. Los comentarios empiezan con porcentaje. Las declaraciones empiezan con dos puntos guion. Los predicados van en minúscula y las variables en mayúscula, como Edad. Y todo termina en punto: es el error más común al empezar.
+      </aside>
     </section>
 
     <section data-transition="fade">
@@ -202,6 +238,9 @@
       </table>
       <p class="muted"><code>*</code> Una vez vinculada a un valor, una variable no puede modificarse.</p>
       <p class="muted"><code>*</code> Mercury utiliza tipado estático: los tipos se verifican durante la compilación.</p>
+      <aside class="notes">
+        Tipos básicos: int, float, string, char y bool. Dos ideas clave: una variable, una vez tiene valor, no cambia; y los tipos se revisan al compilar, no al ejecutar.
+      </aside>
     </section>
 
     <section>
@@ -237,6 +276,9 @@
         </div>
 
       </div>
+      <aside class="notes">
+        Para organizar datos: las listas, con elementos del mismo tipo, como la lista del uno al cinco. Y tipos propios, como dia, que solo puede ser lunes a viernes. Si escribimos sabado, el compilador lo rechaza.
+      </aside>
     </section>
 
     <section data-transition="fade">
@@ -263,6 +305,9 @@
     <span class="k">else</span>
         <span class="v">Resultado</span> = <span class="s">"Menor de edad"</span>
     ).</code></pre>
+      <aside class="notes">
+        Operadores aritméticos, de comparación y lógicos: la coma es Y, el punto y coma es O. Y el if-then-else: clasificar recibe una edad y devuelve mayor o menor de edad. Como siempre da una respuesta, es det.
+      </aside>
     </section>
 
     <section>
@@ -307,6 +352,9 @@
         </div>
 
       </div>
+      <aside class="notes">
+        La diferencia entre predicados y funciones. Un predicado dice si una relación se cumple, como es_par, que puede fallar. Una función calcula un valor, como cuadrado. Con esto, Juan Camilo nos muestra lo que hace distinto a Mercury.
+      </aside>
     </section>
     <!-- ===== FIN SECCIÓN (Maria Luisa Bautista) : Tour por Mercury ===== -->
 

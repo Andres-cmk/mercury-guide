@@ -19,6 +19,9 @@
       <span class="kicker">Tutorial de Mercury</span>
       <h1 class="grad">Fundamentos</h1>
       <p style="font-size:0.9em">Hechos, reglas y relaciones<br><strong>sin indicarle al computador cada paso</strong></p>
+      <aside class="notes">
+        Buenas. Antes del tutorial, un repaso corto de la idea que hay detrás de Mercury: describir hechos, reglas y relaciones, en vez de decirle al computador cada paso.
+      </aside>
     </section>
 
     <section>
@@ -43,6 +46,9 @@
     sabe(Persona, <span class="s">"python"</span>).</code></pre>
         </div>
       </div>
+      <aside class="notes">
+        Miren el mismo problema de dos formas. En Java decimos cómo: un contador, un ciclo, una suma paso a paso. En Mercury decimos qué debe ser verdad: alguien puede participar si es estudiante y sabe Python. No hay ciclo, hay una relación.
+      </aside>
     </section>
 
     <section>
@@ -58,6 +64,9 @@
         </tbody>
       </table>
       <p class="muted" style="margin-top:1em">Mercury representa problemas mediante relaciones: el compilador ayuda a verificar cómo se usan.</p>
+      <aside class="notes">
+        Esa es la diferencia de fondo. Lo imperativo da instrucciones, cambia variables y controla el recorrido. Lo lógico declara hechos y reglas, y el motor busca qué valores las hacen verdaderas. Mercury agrega algo: el compilador verifica cómo se usan esas relaciones.
+      </aside>
     </section>
 
     <section>
@@ -74,6 +83,9 @@
           <tr><td>Daniel</td><td style="color:var(--green)">Sí</td><td style="color:var(--cyan)">Python</td></tr>
         </tbody>
       </table>
+      <aside class="notes">
+        Vamos a usar un problema guía en todo el bloque: quién puede participar. Una persona participa si es estudiante y sabe Python. Fíjense en Daniel: más adelante va a dar una sorpresa.
+      </aside>
     </section>
 
     <section>
@@ -94,6 +106,9 @@
         </div>
       </div>
       <p class="muted fragment">Un hecho afirma una relación: termina en punto y se considera verdadero dentro del programa.</p>
+      <aside class="notes">
+        Primero los hechos: lo que damos por cierto. Cada línea afirma una relación y termina en punto. Ana, Carlos y Daniel son estudiantes, y cada uno sabe un lenguaje. Ojo: a Daniel le escribimos Python con mayúscula.
+      </aside>
     </section>
 
     <section>
@@ -107,6 +122,9 @@
         <div class="cap c-cyan fragment fade-in-then-out" data-fragment-index="3"><b>Primera condición.</b> La persona debe aparecer como estudiante. La coma representa una conjunción lógica.</div>
         <div class="cap c-green fragment fade-in-then-out" data-fragment-index="4"><b>Segunda condición.</b> Debe saber exactamente <code>"python"</code>. El punto finaliza la cláusula.</div>
       </div>
+      <aside class="notes">
+        Ahora la regla. La primera línea es la firma: recibe un string de entrada y es semidet, o sea que puede cumplirse o no. Después la cabecera, y el cuerpo con dos condiciones separadas por coma, que es un Y lógico. El punto cierra la regla.
+      </aside>
     </section>
 
     <section>
@@ -124,6 +142,9 @@
           <tr><td><code>.</code></td><td>Fin de cláusula</td><td>Cierra el hecho o la regla</td></tr>
         </tbody>
       </table>
+      <aside class="notes">
+        Esta tabla resume cada símbolo. Los más importantes: in, que el dato llega con valor; semidet, cero o una solución; el dos puntos guion, que se lee como si; y la coma, que es un Y.
+      </aside>
     </section>
 
     <section>
@@ -143,6 +164,9 @@
         </tbody>
       </table>
       <p class="muted">Mercury distingue mayúsculas y minúsculas. Es útil normalizar los datos.</p>
+      <aside class="notes">
+        La regla es una equivalencia lógica: participa si y solo si es estudiante y sabe python. Ana cumple. Carlos no, sabe Java. Y Daniel tampoco, aunque sepa Python: lo escribimos con mayúscula, y para Mercury son textos distintos. Por eso conviene normalizar los datos.
+      </aside>
     </section>
 
     <section>
@@ -165,6 +189,9 @@
         </div>
       </div>
       <p class="muted">Unificar significa hacer compatibles dos términos, creando o comprobando una asociación de variables.</p>
+      <aside class="notes">
+        La unificación es cómo el motor encuentra respuestas: hace compatibles dos términos. Si consultamos estudiante de Persona, sin valor, Persona se puede asociar con Ana, con Carlos o con Daniel.
+      </aside>
     </section>
 
 
@@ -177,6 +204,9 @@
         <div class="card c-cyan fragment"><h3>Modos</h3><p>Indican qué argumentos entran y cuáles salen.</p></div>
         <div class="card c-pink fragment"><h3>Determinismo</h3><p>Indica cuántas soluciones puede producir.</p></div>
       </div>
+      <aside class="notes">
+        Hasta aquí es programación lógica en general. Lo propio de Mercury son tres garantías: tipos, modos y determinismo. Las vemos una por una.
+      </aside>
     </section>
 
     <section>
@@ -192,6 +222,9 @@
 <span class="p">utiliza</span>(<span class="s">"Ana"</span>, python).
 <span class="p">utiliza</span>(<span class="s">"Carlos"</span>, java).</code></pre>
       <p class="muted">Si se usa otro valor, el compilador puede detectarlo antes de ejecutar.</p>
+      <aside class="notes">
+        Tipos: definimos el tipo lenguaje con tres valores posibles. Si alguien usa un valor que no existe, el compilador lo detecta antes de ejecutar. En Prolog ese error aparecería en ejecución.
+      </aside>
     </section>
 
     <section>
@@ -208,6 +241,9 @@
 
 <span class="p">duplicar</span>(X, Y) :-
     Y = X * <span class="s">2</span>.</code></pre>
+      <aside class="notes">
+        Modos: indican hacia dónde fluye la información. In es un dato que entra con valor; out, un dato que el predicado calcula. Duplicar recibe X y produce Y igual a X por dos.
+      </aside>
     </section>
 
     <section>
@@ -226,6 +262,9 @@
         </div>
       </div>
       <p style="margin-top:1em">En otros lenguajes parece que un método recibe y devuelve valores. En Mercury, los modos hacen explícito ese flujo.</p>
+      <aside class="notes">
+        En la práctica: entra X igual a 5 y sale Y igual a 10. En otros lenguajes eso es una función que devuelve algo; en Mercury el flujo queda escrito en la declaración y el compilador lo revisa.
+      </aside>
     </section>
 
     <section>
@@ -240,6 +279,9 @@
           <tr><td style="color:var(--pink)">nondet</td><td>Cero o más</td><td>Puede</td></tr>
         </tbody>
       </table>
+      <aside class="notes">
+        Determinismo: cuántas soluciones puede dar un predicado. Det, exactamente una. Semidet, cero o una. Multi, una o más. Nondet, cero o más. Declararlo permite al compilador generar código más rápido y avisar si nos equivocamos.
+      </aside>
     </section>
 
     <section>
@@ -256,6 +298,9 @@
         <div class="card c-green fragment"><h3>es_par(4)</h3><p>Éxito: 4 modulo 2 es 0.</p></div>
         <div class="card c-pink fragment"><h3>es_par(5)</h3><p>Falla: 5 modulo 2 es 1.</p></div>
       </div>
+      <aside class="notes">
+        Un ejemplo semidet: es_par. Recibe un entero conocido y se cumple si el residuo al dividir por dos es cero. Con 4 tiene éxito; con 5 falla. Nunca da dos respuestas.
+      </aside>
     </section>
 
     <section data-transition="fade">
@@ -268,12 +313,16 @@
       </div>
       <p style="margin-top:1em">El programa describe <strong>qué</strong> debe ser verdadero; el compilador ayuda a comprobar <strong>cómo puede resolverse</strong>.</p>
       <p class="muted"><a href="../index.html" style="color:var(--cyan)">Volver al temario</a></p>
+      <aside class="notes">
+        Para cerrar: los hechos afirman, las reglas derivan, y los contratos de tipos, modos y determinismo dejan que el compilador verifique. Con eso claro, pasamos al tutorial práctico.
+      </aside>
     </section>
 
   </div>
 </div>
 
 <script src="../dist/reveal.js"></script>
+<script src="../dist/plugin/notes.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -282,7 +331,8 @@
     backgroundTransition: 'fade',
     width: 1280,
     height: 720,
-    margin: 0.06
+    margin: 0.06,
+    plugins: [ RevealNotes ]
   });
 </script>
 </body>
