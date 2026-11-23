@@ -217,6 +217,44 @@ body {
 .reveal .controls { color: var(--cyan); }
 .reveal .slide-number { color: var(--muted); background: transparent; font-size: 14px; }
 
+/* Volver al temario */
+.back-to-index {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: rgba(15, 16, 34, 0.78);
+  color: var(--cyan) !important;
+  font-family: var(--r-main-font);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.back-to-index:hover {
+  border-color: var(--cyan);
+  background: rgba(15, 16, 34, 0.95);
+  transform: translateX(-2px);
+}
+.back-to-index:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+.back-to-index .arrow { font-size: 22px; }
+
+@media print {
+  .back-to-index { display: none; }
+}
+
 /* Orbes decorativos en el título */
 .orb {
   position: absolute; border-radius: 50%; filter: blur(2px); opacity: 0.9; pointer-events: none;
